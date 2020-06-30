@@ -11,7 +11,7 @@ const flash      = require('connect-flash');
 const usuarios   = require('./routes/user');
 const passport   = require('passport');
 require('./config/auth')(passport);
-
+const db         = require('./config/db');
 
 //CONFIGURAÇÕES
 // SESSÃO
@@ -60,7 +60,7 @@ app.set('view engine', 'handlebars');
 
 //MONGOOSE
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/receita-culinaria').then(() => {
+mongoose.connect(db.mongoURI).then(() => {
     console.log("Conectado ao mongo");
 }).catch((erro) => {
     console.log("Erro ao se conectar "+erro);
