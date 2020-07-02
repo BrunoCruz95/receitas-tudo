@@ -43,13 +43,13 @@ a:hover{
   text-align: center;
 }
 #area-rodape{
-  margin-top: 10px;
-  font-family: Comic Sans MS, Comic Sans, cursive;
-  font-size: 20px;
+  margin-top: 175px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 15px;
   text-align: center;
 }
 #area-leia-mais{
-  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 10px;
   -webkit-text-stroke-width: 0.2px;
   -webkit-text-stroke-color: #c52700;
@@ -62,23 +62,23 @@ a:hover{
 }
 #area-receita{
   margin-top: 100px;
-  font-family: OCR A Std, monospace;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 70px;
   text-align: center;
 }
 #area-sobre{
-  border: 10px ridge #623b2a;
+  border: 5px ridge #623b2a;
   background: #9b734d;
-  margin: 20px;
-  padding: 20px;
-  font-size: 20px;
-  font-family: Brush Script MT, Brush Script Std, cursive;
+  margin: 10px;
+  padding: 10px;
+  font-size: 10px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
 }
 #area-navbar{
   background-color: #f73100;
   text-align: center;
-  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 #area-informacao{
   padding-left: 5px;
@@ -87,7 +87,7 @@ a:hover{
 }
 #area-botao{
   font-size: 20px;
-  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 #botao-navbar{
   font-size: 10px;
@@ -116,19 +116,18 @@ a:hover{
 }
 #area-botao-editar{
   background: #0067a7;
-  margin: 5px;
   padding: 6px;
   text-align: center;
   font-size: 10px;
   margin-left: 10px;
   width: 60px;
   height: 30px;
-  margin-top: 20px;
-  font-family: Comic Sans MS, Comic Sans, cursive;
+  margin-top: 10px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 #area-inicio{
   font-weight: 100;
-  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 15px;
 }
 #area-dados{
@@ -141,11 +140,11 @@ a:hover{
   padding: 7px;
   margin: 10px;
   font-size: 10px;
-  margin-left: 25px;
+  margin-left: 20px;
   width: 80px;
   height: 30px;
   margin-top: 10px;
-  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 #area-botao-salvar{
   background: #21c700;
@@ -156,10 +155,10 @@ a:hover{
   margin: auto;
   border: 5px solid #21c700;
   margin-top: 10px;
-  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 #area-social{
-  font-family: OCR A Std, monospace;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 15px;
   margin-top: 15px;
   -webkit-text-stroke-width: 0.5px;
@@ -178,6 +177,19 @@ a:hover{
 #area-cabecalho a:hover{
   color: #f73100;
   background: #FFF;
+  text-decoration: none;
+}
+/**********************************************/
+#area-rodape a:link{
+  color: #4e4e4e;
+  padding: 8px 12px;
+}
+#area-rodape a:visited{
+  color: #4e4e4e;
+  padding: 8px 12px;
+}
+#area-rodape a:hover{
+  color: #f73100;
   text-decoration: none;
 }
 /**********************************************/
@@ -283,7 +295,7 @@ a:hover{
   margin: 20px;
   margin-bottom: 20px;
   padding: 10px;
-  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 15px;
 }
 .fundo-principal{
