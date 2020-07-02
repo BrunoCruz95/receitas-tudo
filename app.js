@@ -60,10 +60,9 @@ app.set('view engine', 'handlebars');
 
 //MONGOOSE
 mongoose.Promise = global.Promise;
+
 const url = process.env.MONGO_URL || 'mongodb://localhost/receita-culinaria';
 mongoose.connect(url, {userNewUrlParser: true, useUnifiedTopology: true}).then(() => {
-    receitastudo.bootstrap();
-    app.listen(port);
     console.log("Conectado ao mongo");
 }).catch((erro) => {
     console.log("Erro ao se conectar "+erro);
