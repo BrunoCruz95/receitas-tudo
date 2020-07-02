@@ -3,18 +3,10 @@
   <div id="area-navbar">
     <div id="botao-navbar">
       <strong>
-        {{#each usuarios}}
-        {{#if eAdmin}}
         <a href="/user/inicio">Home</a>
         <a href="/user/receitas/lista">Minhas Receitas</a>
         <a href="/user/receitas/outras">Lista de Receitas</a>
         <a href="/user/logout">Sair</a>
-        {{else}}
-        <a href="/user/inicio">Home</a>
-        <a href="/user/receitas/outras">Lista de Receitas</a>
-        <a href="/user/logout">Sair</a>
-        {{/if}}
-        {{/each}}
       </strong>
     </div>
   </div>
