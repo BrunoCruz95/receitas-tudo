@@ -1,4 +1,3 @@
-
 {{>_navbar_lista}}
 
 <div class="titulo-superior">Todas as receita você encontra aqui</div>
@@ -10,7 +9,7 @@
     <div id='area-botao-adicionar'>
         <div id='botao-adicionar'>
             <a href="/user/receitas/add">
-                Adiciona Receita
+                Adiciona
             </a>
         </div>
     </div>
@@ -24,8 +23,7 @@
 
                 <div id='botao-apagar'>
                     <button type="submit" class="deletar">
-                        <!--CARACTERE-->⠀⠀
-                        <!--INVISIVEL-->
+                        <strong>X</strong>
                     </button>
                 </div>
             </form>
@@ -72,20 +70,17 @@
                 {{/if}}
             </div>
 
-            <div id="area-dados">
-                <span>{{autor}}&nbsp;~</span>
-                <span>{{formatDate date}}</span>
-            </div>
+
 
             <div>
                 <div id='area-botao-editar'>
-                    <div id='botao-editar'>
-                        <a href="/user/receitas/editar/{{_id}}">
-                            Editar
-                        </a>
-                    </div>
+                    <a href="/user/receitas/editar/{{_id}}">
+                        Editar
+                    </a>
                 </div>
             </div>
+            <span>{{autor}}&nbsp;~</span>
+            <span>{{formatDate date}}</span>
         </div>
 
         {{else}}
