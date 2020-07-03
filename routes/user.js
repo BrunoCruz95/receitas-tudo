@@ -1,19 +1,19 @@
-const express = require('express');
-const router = express.Router();
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
-const passport = require('passport');
-const {eAdmin}= require('../helpers/eAdmin');
+const express    = require('express');
+const router     = express.Router();
+const mongoose   = require('mongoose');
+const bcrypt     = require('bcryptjs');
+const passport   = require('passport');
 
+const { eAdmin } = require('../helpers/eAdmin');
 require('../models/Usuario');
-const Usuario = mongoose.model('usuarios');
+const Usuario    = mongoose.model('usuarios');
 require("../models/Receita");
-const Receita = mongoose.model("receitas");
+const Receita    = mongoose.model("receitas");
 
 /*ROTA HOMEPAGE*/
 router.get('/inicio', eAdmin, (req, res) => {
-    Receita.find().sort({date:'desc'}).lean().then((receitas) => {
-        res.render("usuario/inicio", {receitas: receitas});
+    Receita.find().sort({ date: 'desc' }).lean().then((receitas) => {
+        res.render("usuario/inicio", { receitas: receitas });
     }).catch((erro) => {
         req.flash("error_msg", "Houve um erro");
         res.redirect('/404');
@@ -31,10 +31,10 @@ router.get('/logout', (req, res) => {
 })
 /*ROTA DE RECEITA UNICA*/
 router.get("/receitas/unica/:titulo", eAdmin, (req, res) => {
-    Receita.findOne({titulo: req.params.titulo}).lean().then((receita) => {
-        if(receita){
-            res.render("usuario/receita_unica", {receita: receita});
-        }else{
+    Receita.findOne({ titulo: req.params.titulo }).lean().then((receita) => {
+        if (receita) {
+            res.render("usuario/receita_unica", { receita: receita });
+        } else {
             req.flash("error_msg", "Esta receita não existe");
             res.redirect("/user/inicio");
         }
@@ -45,21 +45,21 @@ router.get("/receitas/unica/:titulo", eAdmin, (req, res) => {
 })
 /*ROTA DE LISTAR RECEITAS*/
 router.get('/receitas/lista', eAdmin, (req, res) => {
-    Receita.find().sort({date:'desc'}).lean().then((receitas) => {
-        res.render("usuario/lista_receitas", {receitas: receitas});
+    Receita.find().sort({ date: 'desc' }).lean().then((receitas) => {
+        res.render("usuario/lista_receitas", { receitas: receitas });
     }).catch((erro) => {
         req.flash("error_msg", "Houve um erro ao listar as receitas");
-        console.log("Houve um erro: "+ erro);
+        console.log("Houve um erro: " + erro);
         res.redirect("/user");
     })
 })
 /*ROTA DE LISTAR TODAS AS RECEITADAS*/
 router.get('/receitas/outras', eAdmin, (req, res) => {
-    Receita.find().sort({date:'desc'}).lean().then((receitas) => {
-        res.render("usuario/outras_receitas", {receitas: receitas});
+    Receita.find().sort({ date: 'desc' }).lean().then((receitas) => {
+        res.render("usuario/outras_receitas", { receitas: receitas });
     }).catch((erro) => {
         req.flash("error_msg", "Houve um erro ao listar as receitas");
-        console.log("Houve um erro: "+ erro);
+        console.log("Houve um erro: " + erro);
         res.redirect("/user");
     })
 })
@@ -69,7 +69,6 @@ router.get('/receitas/add', eAdmin, (req, res) => {
 })
 /*ROTA DE ADICIONAR RECEITA*/
 router.post('/receitas/nova', eAdmin, (req, res) => {
-    
     // VALIDAÇÕES
     var erros = [];
     var variavel = 0;
@@ -129,12 +128,10 @@ router.post('/receitas/nova', eAdmin, (req, res) => {
 router.get('/registro/add', (req, res) => {
     res.render('usuario/registro');
 })
-
 /*ROTA P/ CARREGAR O FORMULARIO LOGIN*/
 router.get('/login', (req, res) => {
     res.render('usuario/login');
 })
-
 // ROTA PARA VERIFICAR OS DADOS DO LOGIN
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', {
@@ -145,8 +142,8 @@ router.post('/login', (req, res, next) => {
 })
 /*ROTA P/ CARREGAR O FORMULARIO DE EDIÇÃO DE RECEITA*/
 router.get("/receitas/editar/:id", eAdmin, (req, res) => {
-    Receita.findOne({_id:req.params.id}).lean().then((receita) => {
-        res.render("usuario/editar_receitas", {receita: receita}) 
+    Receita.findOne({ _id: req.params.id }).lean().then((receita) => {
+        res.render("usuario/editar_receitas", { receita: receita })
     }).catch((erro) => {
         req.flash("error_msg", "Esta receita não existe")
         res.redirect("/user/receitas/lista")
@@ -154,29 +151,27 @@ router.get("/receitas/editar/:id", eAdmin, (req, res) => {
 })
 /*ROTA DE SALVAR A EDIÇÃO*/
 router.post("/receitas/editar", eAdmin, (req, res) => {
-    Receita.findOne({_id: req.body.id}).then((receita) => {
-        receita.titulo    = req.body.tituloReceita,
-        receita.autor     = req.body.autorReceita,
-        receita.assunto   = req.body.assuntoReceita,
-        receita.material1 = req.body.material1Receita,
-        receita.material2 = req.body.material2Receita,
-        receita.material3 = req.body.material3Receita,
-        receita.material4 = req.body.material4Receita,
-        receita.material5 = req.body.material5Receita,
-        receita.passo1    = req.body.passo1Receita,
-        receita.passo2    = req.body.passo2Receita,
-        receita.passo3    = req.body.passo3Receita,
-        receita.passo4    = req.body.passo4Receita,
-        receita.passo5    = req.body.passo5Receita
-
-        receita.save().then(()=>{
+    Receita.findOne({ _id: req.body.id }).then((receita) => {
+            receita.titulo    = req.body.tituloReceita,
+            receita.autor     = req.body.autorReceita,
+            receita.assunto   = req.body.assuntoReceita,
+            receita.material1 = req.body.material1Receita,
+            receita.material2 = req.body.material2Receita,
+            receita.material3 = req.body.material3Receita,
+            receita.material4 = req.body.material4Receita,
+            receita.material5 = req.body.material5Receita,
+            receita.passo1    = req.body.passo1Receita,
+            receita.passo2    = req.body.passo2Receita,
+            receita.passo3    = req.body.passo3Receita,
+            receita.passo4    = req.body.passo4Receita,
+            receita.passo5    = req.body.passo5Receita
+        receita.save().then(() => {
             req.flash("success_msg", "Receita editada com sucesso!")
             res.redirect("/user/receitas/lista")
         }).catch((erro) => {
             req.flash("error_msg", "Erro ao editar ao editar a receita")
             res.redirect("/user/receitas/lista")
         })
-
     }).catch((erro) => {
         req.flash("error_msg", "Houve um erro ao editar a receita")
         res.redirect("/user/receitas/lista")
@@ -184,17 +179,16 @@ router.post("/receitas/editar", eAdmin, (req, res) => {
 })
 /*ROTA DE DELETAR UMA RECEITA*/
 router.post("/receitas/deletar", eAdmin, (req, res) => {
-    Receita.remove({_id: req.body.id}).then(()=>{
+    Receita.remove({ _id: req.body.id }).then(() => {
         req.flash("success_msg", "Receita deletada com sucesso!")
         res.redirect("/user/receitas/lista")
-    }).catch((erro)=>{
+    }).catch((erro) => {
         req.flash("error_msg", "Houve um erro ao deletar receita")
         res.redirect("/user/receitas/lista")
     })
 })
 /*ROTA P/ SALVAR UM USUARIO*/
 router.post('/registro/novo', (req, res) => {
-
     // VALIDAÇÕES
     var erros = []
     var cont = 0;
@@ -220,18 +214,15 @@ router.post('/registro/novo', (req, res) => {
     } else {
         Usuario.findOne({ nome: req.body.nome }).then((usuarios) => {
             const novo_usuario = new Usuario({
-                nome: req.body.nome,
+                nome:  req.body.nome,
                 senha: req.body.senha
             })
-
             bcrypt.genSalt(10, (erro, salt) => {
                 bcrypt.hash(novo_usuario.senha, salt, (erro, hash) => {
                     if (erro) {
                         req.flash("error_msg", "Houve um erro durante o salvamento do usuário");
                     }
-
                     novo_usuario.senha = hash;
-
                     novo_usuario.save().then(() => {
                         req.flash("success_msg", "Usuário criado com sucesso");
                         res.redirect('/');
@@ -241,12 +232,12 @@ router.post('/registro/novo', (req, res) => {
                     })
                 });
             })
-
         }).catch((erro) => {
             req.flash("error_msg", "Houve um erro");
             res.redirect("/");
         })
     }
 })
+
 
 module.exports = router;

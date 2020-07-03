@@ -1,3 +1,4 @@
+
 module.exports = {
     eAdmin: function(req, res, next){
         if(req.isAuthenticated()){
