@@ -3,7 +3,6 @@ const express    = require('express');
 const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 const app        = express();
-//const admin      = require('./routes/admin'); // PREFIXO
 const path       = require('path');
 const mongoose   = require('mongoose');
 const session    = require('express-session');
@@ -11,7 +10,6 @@ const flash      = require('connect-flash');
 const usuarios   = require('./routes/user');
 const passport   = require('passport');
 require('./config/auth')(passport);
-const db         = require('./config/db');
 
 //CONFIGURAÇÕES
 // SESSÃO
@@ -81,9 +79,6 @@ app.get('/', (req, res) => {
 app.get('/sobre', (req, res) => {
     res.render('sobre');
 })
-
-// ROTA ADMIN
-//app.use('/admin', admin);
 
 // ROTA USUARIOS
 app.use('/user', usuarios);
