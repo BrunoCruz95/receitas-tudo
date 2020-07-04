@@ -1,11 +1,17 @@
 {{#if success_msg}}
-    <div class="alert alert-success mensagens">
-        {{success_msg}}
-    </div>
+<div class="alert alert-success alert-dismissible mensagens">
+    {{success_msg}}
+    <button type="button" class="close del-msg" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 {{/if}}
 
 {{#if error_msg}}
-    <div class="alert alert-danger mensagens">
-        {{error_msg}}
-    </div>
+<div class="alert alert-danger alert-dismissible mensagens">
+    {{error_msg}}
+    <button type="button" class="close del-msg" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 {{/if}}
