@@ -3,6 +3,19 @@ const router     = express.Router();
 const mongoose   = require('mongoose');
 const bcrypt     = require('bcryptjs');
 const passport   = require('passport');
+const multer     = require("multer");
+const path       = require('path');
+
+const storage    = multer.diskStorage({
+    destination: function(req, file, cb){
+        cb(null, "uploads/");
+    },
+    filename: function(req, file, cb){
+        //file.originalname data atual em milesegunds extensao do aquivo
+        cb(null, "IMG" + Date.now() + path.extname(file.originalname));
+    }
+});
+const upload     = multer({storage});
 
 // HELPERS
 // VOCÊ É UM USUÁRIO?
@@ -111,20 +124,6 @@ router.get('/inicio', yes_user, (req, res) => {
         res.redirect('/404');
     })
 })
-//ROTA DE RECEITA UNICA
-router.get("/receitas/unica/:titulo", yes_user, (req, res) => {
-    Receita.findOne({ titulo: req.params.titulo }).lean().then((receita) => {
-        if (receita) {
-            res.render("usuario/receita_unica", { receita: receita });
-        } else {
-            req.flash("error_msg", "Esta receita não existe");
-            res.redirect("/user/inicio");
-        }
-    }).catch((erro) => {
-        req.flash("error_msg", "Esta receita não existe");
-        res.redirect("/user/inicio");
-    })
-})
 //ROTA DE LISTAR RECEITAS
 router.get('/receitas/lista', yes_user, yes_admin, (req, res) => {
     Receita.find().sort({ date: 'desc' }).lean().then((receitas) => {
@@ -135,7 +134,17 @@ router.get('/receitas/lista', yes_user, yes_admin, (req, res) => {
         res.redirect("/user");
     })
 })
-//ROTA DE LISTAR TODAS AS RECEITADAS
+//ROTA DE LISTAR USUÁRIOS
+router.get('/usuarios/lista', yes_user, yes_admin, (req, res) => {
+    Usuario.find().sort({ date: 'desc' }).lean().then((usuarios) => {
+        res.render("usuario/lista_usuarios", { usuarios: usuarios });
+    }).catch((erro) => {
+        req.flash("error_msg", "Houve um erro ao listar as usuario");
+        console.log("Houve um erro: " + erro);
+        res.redirect("/user");
+    })
+})
+//ROTA DE LISTAR TODAS AS RECEITAS
 router.get('/receitas/outras', yes_user, (req, res) => {
     Receita.find().sort({ date: 'desc' }).lean().then((receitas) => {
         res.render("usuario/outras_receitas", { receitas: receitas });
@@ -150,7 +159,7 @@ router.get('/receitas/add', yes_user,  yes_admin, (req, res) => {
     res.render('usuario/adiciona_receitas');
 })
 //ROTA DE ADICIONAR RECEITA
-router.post('/receitas/nova', yes_user,  yes_admin, (req, res) => {
+router.post('/receitas/nova',upload.single("file"), yes_user,  yes_admin, (req, res) => {
     // VALIDAÇÕES
     var erros = [];
     var variavel = 0;

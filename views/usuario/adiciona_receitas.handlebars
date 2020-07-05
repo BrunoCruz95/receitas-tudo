@@ -12,12 +12,15 @@
 <div id="area-informacao">
     <div class="fundo-secundario">
         <div>
-            <form action="/user/receitas/nova" method="POST">
+            <form action="/user/receitas/nova" enctype="multipart/form-data" method="POST"
+                enctype="multipart/form-data">
 
                 <label>Nome: </label>
                 <div class="form-group-input">
                     <input type="text" class="form-input" name="tituloReceita" placeholder="Nome da Receita">
                 </div>
+
+                <input type="file" name="file">
 
                 <label>Autor: </label>
                 <div class="form-group-input">
@@ -63,7 +66,7 @@
                 <div class="form-group-input">
                     <input type="text" class="form-input" name="passo5Receita" placeholder="5º passo">
                 </div>
-                
+
                 <center>
                     <button type="submit" id='area-botao-salvar' id='botao-salvar'>Salvar</button>
                 </center>

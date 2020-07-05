@@ -11,6 +11,7 @@ const usuarios   = require('./routes/user');
 const passport   = require('passport');
 require('./config/auth')(passport);
 
+
 //CONFIGURAÇÕES
 // SESSÃO
 app.use(session({

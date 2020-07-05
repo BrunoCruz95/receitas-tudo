@@ -1,0 +1,20 @@
+{{>_navbar_lista}}
+
+<div class="titulo-superior">Todas as receita você encontra aqui</div>
+
+{{>_msg}}
+
+<div id="area-informacao">
+    <div>
+        {{#each usuarios}}
+        <div class="fundo-secundario">
+            <div class="titulo">{{nome}}</div>
+            <div id="area-dados">
+                <strong>
+                    <span>{{formatDate date}}</span>
+                </strong>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
