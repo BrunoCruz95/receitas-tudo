@@ -11,7 +11,6 @@ const storage    = multer.diskStorage({
         cb(null, "uploads/");
     },
     filename: function(req, file, cb){
-        //file.originalname data atual em milesegunds extensao do aquivo
         cb(null, "IMG" + Date.now() + path.extname(file.originalname));
     }
 });
@@ -159,7 +158,7 @@ router.get('/receitas/add', yes_user,  yes_admin, (req, res) => {
     res.render('usuario/adiciona_receitas');
 })
 //ROTA DE ADICIONAR RECEITA
-router.post('/receitas/nova',upload.single("file"), yes_user,  yes_admin, (req, res) => {
+router.post('/receitas/nova', upload.single("file"), yes_user,  yes_admin, (req, res) => {
     // VALIDAÇÕES
     var erros = [];
     var variavel = 0;
@@ -224,6 +223,7 @@ router.get("/receitas/editar/:id", yes_user, yes_admin, (req, res) => {
         res.redirect("/user/receitas/lista")
     })
 })
+
 //ROTA DE SALVAR A EDIÇÃO
 router.post("/receitas/editar", yes_user, yes_admin, (req, res) => {
     Receita.findOne({ _id: req.body.id }).then((receita) => {

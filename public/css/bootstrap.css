@@ -119,6 +119,7 @@ a:hover{
   font-size: 15px;
 }
 #area-dados{
+  color: rgb(50, 50, 50);
   text-align: center;
   font-size: 15px;
 }
@@ -357,7 +358,7 @@ a:hover{
   color: white;
 }
 .tamanho-texto{
-  color: #4f413a;
+  color: rgb(50, 50, 50);
   font-size: 17px;
 }
 .mensagens{
