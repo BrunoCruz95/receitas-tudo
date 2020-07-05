@@ -68,15 +68,18 @@
                 <div>5 - {{passo5}}</div>
                 {{/if}}
             </div>
-
             <div id='area-botao-editar'>
                 <a href="/user/receitas/editar/{{_id}}">
                     Editar
                 </a>
             </div>
-            <br>
-            <span>{{autor}}&nbsp;~</span>
-            <span>{{formatDate date}}</span>
+
+            <div id="area-dados">
+                <strong>
+                    <span>{{autor}}&nbsp;~</span>
+                    <span>{{formatDate date}}</span>
+                </strong>
+            </div>
         </div>
 
         {{else}}

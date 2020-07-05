@@ -47,7 +47,11 @@
             <div>5 - {{receita.passo5}}</div>
             {{/if}}
         </div>
-        <span>{{receita.autor}}&nbsp;~</span>
-        <span>{{formatDate receita.date}}</span>
+        <div id="area-dados">
+            <strong>
+                <span>{{autor}}&nbsp;~</span>
+                <span>{{formatDate date}}</span>
+            </strong>
+        </div>
     </div>
 </div>
