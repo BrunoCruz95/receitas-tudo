@@ -183,6 +183,19 @@ a:hover{
   text-decoration: none;
 }
 /**********************************************/
+#area-social a:link{
+  color: #343434;
+  padding: 8px 12px;
+}
+#area-social a:visited{
+  color: #343434;
+  padding: 8px 12px;
+}
+#area-social a:hover{
+  color: #f73100;
+  text-decoration: none;
+}
+/**********************************************/
 #area-botao-adicionar a:link{
   color: #FFF;
   padding: 8px 12px;
@@ -344,13 +357,13 @@ a:hover{
   color: white;
 }
 .tamanho-texto{
-  color: #ba2500;
-  font-size: 15px;
+  color: #4f413a;
+  font-size: 17px;
 }
 .mensagens{
   margin-left: 25px;
   margin-right: 25px;
-  margin-top: 15px;
+  margin-top: 18px;
   font-family: Brush Script MT, Brush Script Std, cursive;
   font-size: 15px;
 }
