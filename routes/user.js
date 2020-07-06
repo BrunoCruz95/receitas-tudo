@@ -7,7 +7,6 @@ const multer = require("multer");
 const path = require('path');
 
 const puppeteer = require('puppeteer');
-const fs = require('fs-extra');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -283,16 +282,7 @@ router.post("/baixar", yes_user, (req, res) => {
             const browser = await puppeteer.launch();
             const page    = await browser.newPage();
 
-            await page.setContent(`
-            <center>
-            <br><br><br><br><br>
-            <h1>Todas as receitas você encontra aqui</h1>
-            <p> Este é um simples site de receitas onde
-            você pode aprender e ajudar outras pessoas
-            a fazerem aquele famoso prato especial.</p>
-            <h2>Por Bruno Cruz</h2>
-            </center>
-            `);
+            await page.setContent("<h2>Por Bruno Cruz</h2>");
             await page.pdf({
                 path: 'download'+Date.now()+".pdf",
                 format: 'A4',
