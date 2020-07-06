@@ -281,7 +281,7 @@ router.post("/baixar", yes_user, (req, res) => {
     (async function () {
         try {
             const browser = await puppeteer.launch();
-            const page = await browser.newPage();
+            const page    = await browser.newPage();
 
             await page.setContent(`
             <center>
@@ -294,16 +294,17 @@ router.post("/baixar", yes_user, (req, res) => {
             </center>
             `);
             await page.pdf({
-                
-                path: 'download'+ Date.now()+".pdf",
+                path: 'download'+Date.now()+".pdf",
                 format: 'A4',
                 printBackground: true
             });
-
+            req.flash("success_msg", "Download realizado com sucesso!")
             console.log('pdf realizado com sucesso');
             res.redirect("/user/inicio");
         } catch (err) {
             console.log("Error: " + err);
+            req.flash("error_msg", "Erro ao realizado o download!")
+            res.redirect("/user/inicio");
         }
     })();
 })

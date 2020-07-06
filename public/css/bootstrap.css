@@ -65,7 +65,7 @@ a:hover{
 #area-receita{
   margin-top: 10px;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 20px;
+  font-size: 15px;
   text-align: center;
 }
 #area-sobre{
@@ -130,10 +130,10 @@ a:hover{
 #area-botao-adicionar{
   background: #21c700;
   margin-left: 20px;
-  font-size: 15px;
+  font-size: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
-  width: 100px;
+  width: 80px;
   text-align: center;
   margin-top: 10px;
   font-family: Georgia, 'Times New Roman', Times, serif;
