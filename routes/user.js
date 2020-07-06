@@ -282,14 +282,24 @@ router.post("/baixar", yes_user, (req, res) => {
             const browser = await puppeteer.launch();
             const page    = await browser.newPage();
 
-            await page.setContent("<h2>Por Bruno Cruz</h2>");
+            await page.setContent(`
+            <center>
+            <br><br><br><br><br>
+            <h1>Todas as receitas você encontra aqui</h1>
+            <p> Este é um simples site de receitas onde
+            você pode aprender e ajudar outras pessoas
+            a fazerem aquele famoso prato especial.</p>
+            <h2>Por Bruno Cruz</h2>
+            </center>
+            `);
+            await page.emulateMediaType('screen');
             await page.pdf({
                 path: 'download'+Date.now()+".pdf",
                 format: 'A4',
                 printBackground: true
             });
             req.flash("success_msg", "Download realizado com sucesso!")
-            console.log('pdf realizado com sucesso');
+            console.log('PDF realizado com sucesso');
             res.redirect("/user/inicio");
         } catch (err) {
             console.log("Error: " + err);
